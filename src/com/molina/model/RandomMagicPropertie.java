@@ -4,10 +4,10 @@ package com.molina.model;
  * Created by Fran on 17/05/2017.
  */
 public enum RandomMagicPropertie {
-    DAMAGE_PERCENT (randomNum(), "%Damage"),
-    LIFE_PERCENT (randomNum(), "%Life"),
-    VITALITY(randomStatNum(), "Vitality"),
-    ARMOR(randomStatNum(), "Armor");
+    DAMAGE_PERCENT (randomNum(), "% Damage"),
+    LIFE_PERCENT (randomNum(), "% Life"),
+    VITALITY(randomStatNum(), " Vitality"),
+    ARMOR(randomStatNum(), " Armor");
 
     private final int RANDOM_NUM;
     private final String MAGIC_PORPERTIE;

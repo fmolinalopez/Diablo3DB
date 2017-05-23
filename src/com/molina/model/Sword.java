@@ -26,12 +26,12 @@ public class Sword extends Weapon {
 
     @Override
     public String toString() {
-        return  "Weapon type: Sword" + '\n' +
+        return  "Weapon type: " + this.getClass().getSimpleName() + '\n' +
                 super.toString() + '\n' +
                 "AttackSpeed: +" + attackSpeed + "% \n" +
-                "RandomMagicPropertie1: +" + randomMagicPropertie1.getRANDOM_NUM() + "" + randomMagicPropertie1.getMAGIC_PORPERTIE() + '\n' +
-                "RandomMagicPropertie2: +" + randomMagicPropertie2.getRANDOM_NUM() + "" + randomMagicPropertie2.getMAGIC_PORPERTIE() + '\n' +
-                "RandomMagicPropertie3: +" + randomMagicPropertie3.getRANDOM_NUM() + "" + randomMagicPropertie3.getMAGIC_PORPERTIE() ;
+                "+" + randomMagicPropertie1.getRANDOM_NUM() + "" + randomMagicPropertie1.getMAGIC_PORPERTIE() + '\n' +
+                "+" + randomMagicPropertie2.getRANDOM_NUM() + "" + randomMagicPropertie2.getMAGIC_PORPERTIE() + '\n' +
+                "+" + randomMagicPropertie3.getRANDOM_NUM() + "" + randomMagicPropertie3.getMAGIC_PORPERTIE() ;
     }
 
 

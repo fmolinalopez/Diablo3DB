@@ -37,9 +37,22 @@ public class DiabloDB {
         public int compare(Weapon wp1, Weapon wp2) {
             int res;
 
-            res = (int)(wp1.getDps() - wp2.getDps());
+            res = (int)(wp2.getDps() - wp1.getDps());
 
             if (res != 0 ) { return res; }
+
+            return wp1.getWeaponName().compareToIgnoreCase(wp2.getWeaponName());
+        }
+    };
+
+    public Comparator<Weapon> sortByWeaponsType = new Comparator<Weapon>() {
+        @Override
+        public int compare(Weapon wp1, Weapon wp2) {
+            int res;
+
+            res = wp1.getClass().getSimpleName().compareToIgnoreCase(wp2.getClass().getSimpleName());
+
+            if (res != 0) { return res; }
 
             return wp1.getWeaponName().compareToIgnoreCase(wp2.getWeaponName());
         }
@@ -51,6 +64,10 @@ public class DiabloDB {
 
     public void sortByName() {
         Collections.sort(weapons, sortByWeaponsName);
+    }
+
+    public void sortByType() {
+        Collections.sort(weapons, sortByWeaponsType);
     }
 
     public void addWeapon(Weapon weapon) {

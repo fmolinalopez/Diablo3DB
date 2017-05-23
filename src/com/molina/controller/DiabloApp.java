@@ -30,6 +30,9 @@ public class DiabloApp {
                     showWeaponsDps();
                     break;
                 case 5:
+                    showWeaponsType();
+                    break;
+                case 6:
                     showWeaponsStats();
                     break;
 
@@ -68,8 +71,18 @@ public class DiabloApp {
         }
     }
 
+    private void showWeaponsType() {
+        diabloDB.sortByType();
+
+        int index = 1;
+        for (Weapon weapon: diabloDB.getWeapons()) {
+            System.out.println(index + "# Weapon name: " + weapon.getWeaponName() + ", Type: " + weapon.getClass().getSimpleName());
+            index++;
+        }
+    }
+
     private void showWeaponsStats() {
-        diabloDB.sortByName();
+        diabloDB.sortByType();
 
         int index = 1;
         for (Weapon weapon: diabloDB.getWeapons()) {
@@ -85,19 +98,30 @@ public class DiabloApp {
         String legendaryPower;
         double dps;
 
-        System.out.println("Enter weapon type");
-        System.out.println("1.- Sword");
-        System.out.println("2.- Axe");
-        System.out.println("3.- Crossbow");
-        System.out.println("4.- Wand");
-        weaponType = input.nextInt();
+        do {
+            System.out.println("Enter weapon type");
+            System.out.println("1.- Sword");
+            System.out.println("2.- Axe");
+            System.out.println("3.- Crossbow");
+            System.out.println("4.- Wand");
+            weaponType = input.nextInt();
+        } while (weaponType < 1 || weaponType > 4 );
         input.nextLine();
-        System.out.println("Enter weapon name:");
-        name = input.nextLine();
-        System.out.println("Enter weapon Legendary power:");
-        legendaryPower = input.nextLine();
-        System.out.println("Enter weapon dps:");
-        dps = input.nextDouble();
+
+        do {
+            System.out.println("Enter weapon name:");
+            name = input.nextLine().trim().replaceAll("\\s+", " ");
+        } while (name.equals(""));
+
+        do {
+            System.out.println("Enter weapon Legendary power:");
+            legendaryPower = input.nextLine().trim().replaceAll("\\s+", " ");
+        } while (legendaryPower.equals(""));
+
+        do {
+            System.out.println("Enter weapon dps:");
+            dps = input.nextDouble();
+        } while (dps < 0);
 
         diabloDB.addWeapon(weaponType(weaponType, name, legendaryPower, dps));
     }
@@ -105,7 +129,7 @@ public class DiabloApp {
     private void readIndex() {
         int index;
 
-        showWeaponsName();
+        showWeaponsType();
 
         do {
             System.out.println("Enter weapon index:");
@@ -152,10 +176,13 @@ public class DiabloApp {
 
         System.out.println("***********************************");
         System.out.println("* 1.- Add Weapon                  *");
-        System.out.println("* 2.- Remove Weapon               *");
-        System.out.println("* 3.- Sort Weapons by name        *");
-        System.out.println("* 4.- Sort Weapons by dps         *");
-        System.out.println("* 5.- Show Weapons with all stats *");
+        if (diabloDB.getWeapons().size() > 0) {
+            System.out.println("* 2.- Remove Weapon               *");
+            System.out.println("* 3.- Sort Weapons by name        *");
+            System.out.println("* 4.- Sort Weapons by dps         *");
+            System.out.println("* 5.- Show Weapons by type        *");
+            System.out.println("* 6.- Show Weapons with all stats *");
+        }
         System.out.println("* 0.- Exit                        *");
         System.out.println("***********************************");
         System.out.println("Option: ");

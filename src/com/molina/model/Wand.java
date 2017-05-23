@@ -30,12 +30,12 @@ public class Wand extends Weapon {
 
     @Override
     public String toString() {
-        return  "Weapon type: Wand" + '\n' +
+        return  "Weapon type: " + this.getClass().getSimpleName() + '\n' +
                 super.toString() + '\n' +
                 "AttackSpeed: +" + attackSpeed + "% \n" +
                 "Magic damage: +" + magicDamage + "% \n" +
-                "RandomMagicPropertie1: +" + randomMagicPropertie1.getRANDOM_NUM() + "" + randomMagicPropertie1.getMAGIC_PORPERTIE() + '\n' +
-                "RandomMagicPropertie2: +" + randomMagicPropertie2.getRANDOM_NUM() + "" + randomMagicPropertie2.getMAGIC_PORPERTIE();
+                "+" + randomMagicPropertie1.getRANDOM_NUM() + "" + randomMagicPropertie1.getMAGIC_PORPERTIE() + '\n' +
+                "+" + randomMagicPropertie2.getRANDOM_NUM() + "" + randomMagicPropertie2.getMAGIC_PORPERTIE();
     }
 
 
