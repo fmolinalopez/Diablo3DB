@@ -26,9 +26,13 @@ public abstract class Weapon {
 
     // Metodos
 
+    //Metodo que genera una velocidad de ataque aleatoria entre 1 y 20 para el arma.
+
     protected static int randomAttackSpeed(){
         return (int)(1+Math.random()*20);
     }
+
+    // Metodo que genera una propiedad aleatoria para el arma.
 
     protected static RandomMagicPropertie generateRandomMagicPropertie() {
         int res = (int)(1+Math.random()*4);

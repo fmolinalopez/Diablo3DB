@@ -40,6 +40,8 @@ public class DiabloApp {
         }
     }
 
+    // Metodo que carga armas de prueba al arraylist weapons.
+
     public void loadTestWeapons() {
         diabloDB.addWeapon(new Sword("Fulminator", "Chance on hit to apply lightning damage", 125.3));
         diabloDB.addWeapon(new Sword("Doombringer","Physical skills deals 15-20% more damage", 200));
@@ -51,6 +53,8 @@ public class DiabloApp {
         diabloDB.addWeapon(new Wand("Serpent's sparker", "You may have one extra Hydra active at a time", 30));
     }
 
+    // Metodo que imprime el nombre de las armas en orden alfabetico.
+
     private void showWeaponsName() {
         diabloDB.sortByName();
 
@@ -60,6 +64,8 @@ public class DiabloApp {
             index++;
         }
     }
+
+    // Metodo que imprime el nombre y el dps de las armas ordenadas de mas a menos dps.
 
     private void showWeaponsDps() {
         diabloDB.sortByDps();
@@ -71,6 +77,8 @@ public class DiabloApp {
         }
     }
 
+    // Metodo que imprime el nombre y el tipo de las armas ordenadas alfabeticamente por el tipo.
+
     private void showWeaponsType() {
         diabloDB.sortByType();
 
@@ -80,6 +88,9 @@ public class DiabloApp {
             index++;
         }
     }
+
+
+    // Metodo que imprime las armas con todas sus estadisticas ordenadas alfabeticamente por tipo.
 
     private void showWeaponsStats() {
         diabloDB.sortByType();
@@ -91,6 +102,8 @@ public class DiabloApp {
             index++;
         }
     }
+
+    // Metodo que pide datos al usuario para añadir un nuevo arma al arraylist weapons.
 
     private void readWeapon() {
         int weaponType;
@@ -126,6 +139,8 @@ public class DiabloApp {
         diabloDB.addWeapon(weaponType(weaponType, name, legendaryPower, dps));
     }
 
+    // Metodo que pide el indice de un arma al usuario para borrarla del arraylist weapons.
+
     private void readIndex() {
         int index;
 
@@ -139,6 +154,9 @@ public class DiabloApp {
         diabloDB.removeWeapon(index);
     }
 
+    // Metodo que comprueba que el indice introducido por el usuario corresponde a un arma
+    // existente en el arraylist weapons.
+
     private boolean correctIndex(int index){
         if (index < 0 || index > diabloDB.getWeapons().size()) {
             return false;
@@ -146,6 +164,8 @@ public class DiabloApp {
             return true;
         }
     }
+
+    // Metodo que creara un arma en funcion del tipo de arma que introduzca el usuario.
 
     private Weapon weaponType(int weaponType, String name, String legendaryPower, double dps) {
         Weapon weapon;
@@ -169,6 +189,8 @@ public class DiabloApp {
 
         return weapon;
     }
+
+    // Metodo que imprime el menu principal
 
     private int showMenu() {
         Scanner input = new Scanner(System.in);

@@ -19,6 +19,9 @@ public class DiabloDB {
 
     // Metodos
 
+
+    // Comparador de armas por nombre, si tienen el mismo nombre las compara por su dps.
+
     public Comparator<Weapon> sortByWeaponsName = new Comparator<Weapon>() {
         @Override
         public int compare(Weapon wp1, Weapon wp2) {
@@ -31,6 +34,8 @@ public class DiabloDB {
             return (int)(wp1.getDps() - wp2.getDps());
         }
     };
+
+    // Comparador de armas por dps, si tienen el mismo nombre las compara por su nombre.
 
     public Comparator<Weapon> sortByWeaponsDps = new Comparator<Weapon>() {
         @Override
@@ -45,6 +50,8 @@ public class DiabloDB {
         }
     };
 
+    // Comparador de armas por tipo, si tienen el mismo tipo las compara por su nombre.
+
     public Comparator<Weapon> sortByWeaponsType = new Comparator<Weapon>() {
         @Override
         public int compare(Weapon wp1, Weapon wp2) {
@@ -58,23 +65,33 @@ public class DiabloDB {
         }
     };
 
+    // Metodo que emplea el comparador por dps.
+
     public void sortByDps() {
         Collections.sort(weapons, sortByWeaponsDps);
     }
+
+    // Metodo que emplea el comparador por nombre.
 
     public void sortByName() {
         Collections.sort(weapons, sortByWeaponsName);
     }
 
+    // Metodo que emplea el comparador por tipo.
+
     public void sortByType() {
         Collections.sort(weapons, sortByWeaponsType);
     }
+
+    // Metodo que añade un arma al arraylist weapons si esta no es null.
 
     public void addWeapon(Weapon weapon) {
         if (weapon != null){
             weapons.add(weapon);
         }
     }
+
+    // Metodo que elimina un arma del arraylist weapons.
 
     public void removeWeapon(int index) {
         weapons.remove(index);

@@ -17,6 +17,8 @@ public class PrimaryStat {
 
     // Metodos
 
+    // Metodo que genera un stat aleatorio para el atributo primaryStat.
+
     private String randomStat(){
         int res = (int)(1+Math.random()*3);
 
@@ -31,6 +33,8 @@ public class PrimaryStat {
                 return "Dexterity";
         }
     }
+
+    // Metodo que genera un numero aleatorio entre 500 y 800 para el atributo primaryStat.
 
     private int randomNum(){
         return (int)(500+Math.random()*300);
