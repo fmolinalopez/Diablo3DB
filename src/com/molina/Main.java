@@ -1,12 +1,16 @@
 package com.molina;
 
+import com.molina.controller.DiabloApp;
 import com.molina.model.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        _Weapon Fulminator = new OHSword("Fulminator", "Chance on hit to apply lightning damage", 125.3);
 
-        System.out.println(Fulminator);
+        DiabloApp diabloApp = new DiabloApp();
+
+        diabloApp.loadTestWeapons();
+        diabloApp.run();
+
     }
 }

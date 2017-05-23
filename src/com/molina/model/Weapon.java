@@ -3,7 +3,7 @@ package com.molina.model;
 /**
  * Created by Fran on 17/05/2017.
  */
-public class _Weapon {
+public abstract class Weapon {
 
     // Atributos
 
@@ -14,10 +14,10 @@ public class _Weapon {
 
     // Constructores
 
-    public _Weapon() {
+    public Weapon() {
     }
 
-    public _Weapon(String weaponName, String legendaryPower, double dps) {
+    public Weapon(String weaponName, String legendaryPower, double dps) {
         this.weaponName = weaponName;
         this.legendaryPower = legendaryPower;
         this.primaryStat = new PrimaryStat();
@@ -62,7 +62,7 @@ public class _Weapon {
         return "Weapon Name: " + weaponName + '\n' +
                 "LegendaryPower: " + legendaryPower + '\n' +
                 "PrimaryStat: " + primaryStat.getNum() + " " + primaryStat.getStat() + '\n' +
-                "Dps=" + dps + " Damage per Second";
+                "Dps: " + dps + " Damage per Second";
     }
     // Accesores
 
