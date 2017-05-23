@@ -18,8 +18,8 @@ public class Wand extends Weapon {
         super(weaponName, legendaryPower, dps);
         this.attackSpeed = Weapon.randomAttackSpeed();
         this.magicDamage = randomMagicDamage();
-        this.randomMagicPropertie1 = Weapon.generateRandomMagicPropertie();
-        this.randomMagicPropertie2 = Weapon.generateRandomMagicPropertie();
+        this.randomMagicPropertie1 = new RandomMagicPropertie();
+        this.randomMagicPropertie2 = new RandomMagicPropertie();
     }
 
     // Metodos
@@ -34,8 +34,8 @@ public class Wand extends Weapon {
                 super.toString() + '\n' +
                 "AttackSpeed: +" + attackSpeed + "% \n" +
                 "Magic damage: +" + magicDamage + "% \n" +
-                "+" + randomMagicPropertie1.getRANDOM_NUM() + "" + randomMagicPropertie1.getMAGIC_PORPERTIE() + '\n' +
-                "+" + randomMagicPropertie2.getRANDOM_NUM() + "" + randomMagicPropertie2.getMAGIC_PORPERTIE();
+                "+" + randomMagicPropertie1.getNum() + "" + randomMagicPropertie1.getStat() + '\n' +
+                "+" + randomMagicPropertie2.getNum() + "" + randomMagicPropertie2.getStat();
     }
 
 

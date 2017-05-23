@@ -3,33 +3,57 @@ package com.molina.model;
 /**
  * Created by Fran on 17/05/2017.
  */
-public enum RandomMagicPropertie {
-    DAMAGE_PERCENT (randomNum(), "% Damage"),
-    LIFE_PERCENT (randomNum(), "% Life"),
-    VITALITY(randomStatNum(), " Vitality"),
-    ARMOR(randomStatNum(), " Armor");
+public class RandomMagicPropertie {
 
-    private final int RANDOM_NUM;
-    private final String MAGIC_PORPERTIE;
+    private int num;
+    private String stat;
 
-    RandomMagicPropertie(int RANDOM_NUM, String MAGIC_PORPERTIE) {
-        this.RANDOM_NUM = RANDOM_NUM;
-        this.MAGIC_PORPERTIE = MAGIC_PORPERTIE;
+    RandomMagicPropertie() {
+        this.num = randomNum();
+        this.stat = randomStat();
     }
 
-    private static int randomNum(){
-        return (int)(1+Math.random()*10);
+    //Metodos
+
+    // Metodo que genera un numero aleatorio entre 10 y 30.
+
+    private int randomNum() {
+        return (int)(10+Math.random()*20);
     }
 
-    private static int randomStatNum() {
-        return (int)(500+Math.random()*150);
+    // Metodo que genera un stat aleatorio entre 4 opciones.
+
+    private String randomStat() {
+        String res;
+        int num = (int)(1+Math.random()*4);
+        switch (num){
+            case 1:
+                res = "% Damage";
+                break;
+            case 2:
+                res = "% Life";
+                break;
+            case 3:
+                res = "% Vitality";
+                break;
+            case 4:
+                res = "% Armor";
+                break;
+            default:
+                res = "";
+                break;
+        }
+
+        return res;
     }
 
-    public int getRANDOM_NUM() {
-        return RANDOM_NUM;
+    // Accesores
+
+    public int getNum() {
+        return num;
     }
 
-    public String getMAGIC_PORPERTIE() {
-        return MAGIC_PORPERTIE;
+    public String getStat() {
+        return stat;
     }
 }

@@ -17,9 +17,9 @@ public class Sword extends Weapon {
     public Sword(String weaponName, String legendaryPower, double dps) {
         super(weaponName, legendaryPower, dps);
         this.attackSpeed = Weapon.randomAttackSpeed();
-        this.randomMagicPropertie1 = Weapon.generateRandomMagicPropertie();
-        this.randomMagicPropertie2 = Weapon.generateRandomMagicPropertie();
-        this.randomMagicPropertie3 = Weapon.generateRandomMagicPropertie();
+        this.randomMagicPropertie1 = new RandomMagicPropertie();
+        this.randomMagicPropertie2 = new RandomMagicPropertie();
+        this.randomMagicPropertie3 = new RandomMagicPropertie();
     }
 
     // Metodos
@@ -29,9 +29,9 @@ public class Sword extends Weapon {
         return  "Weapon type: " + this.getClass().getSimpleName() + '\n' +
                 super.toString() + '\n' +
                 "AttackSpeed: +" + attackSpeed + "% \n" +
-                "+" + randomMagicPropertie1.getRANDOM_NUM() + "" + randomMagicPropertie1.getMAGIC_PORPERTIE() + '\n' +
-                "+" + randomMagicPropertie2.getRANDOM_NUM() + "" + randomMagicPropertie2.getMAGIC_PORPERTIE() + '\n' +
-                "+" + randomMagicPropertie3.getRANDOM_NUM() + "" + randomMagicPropertie3.getMAGIC_PORPERTIE() ;
+                "+" + randomMagicPropertie1.getNum() + "" + randomMagicPropertie1.getStat() + '\n' +
+                "+" + randomMagicPropertie2.getNum() + "" + randomMagicPropertie2.getStat() + '\n' +
+                "+" + randomMagicPropertie3.getNum() + "" + randomMagicPropertie3.getStat() ;
     }
 
 

@@ -34,33 +34,6 @@ public abstract class Weapon {
 
     // Metodo que genera una propiedad aleatoria para el arma.
 
-    protected static RandomMagicPropertie generateRandomMagicPropertie() {
-        int res = (int)(1+Math.random()*4);
-        RandomMagicPropertie randomMagicPropertie;
-        String propertie;
-
-
-        switch (res){
-            case 1:
-                propertie = "DAMAGE_PERCENT";
-                break;
-            case 2:
-                propertie = "LIFE_PERCENT";
-                break;
-            case 3:
-                propertie = "VITALITY";
-                break;
-            case 4:
-                propertie = "ARMOR";
-                break;
-            default:
-                propertie = "";
-                break;
-            }
-        randomMagicPropertie = RandomMagicPropertie.valueOf(propertie);
-        return randomMagicPropertie;
-    }
-
     @Override
     public String toString() {
         return "Weapon Name: " + weaponName + '\n' +
