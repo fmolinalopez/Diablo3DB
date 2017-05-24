@@ -72,7 +72,7 @@ public class DiabloApp {
 
         int index = 1;
         for (Weapon weapon: diabloDB.getWeapons()) {
-            System.out.println(index + "# Weapon name: " + weapon.getWeaponName() + " Dps: " + weapon.getDps());
+            System.out.println(index + "# Weapon name: " + weapon.getWeaponName() + ", Type: " + weapon.getClass().getSimpleName() + ", Dps: " + weapon.getDps());
             index++;
         }
     }
