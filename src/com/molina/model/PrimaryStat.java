@@ -1,9 +1,11 @@
 package com.molina.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Fran on 17/05/2017.
  */
-public class PrimaryStat {
+public class PrimaryStat implements Serializable {
 
     private int num;
     private String stat;

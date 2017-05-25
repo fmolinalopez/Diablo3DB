@@ -1,9 +1,12 @@
 package com.molina.model;
 
+import java.io.Serializable;
+import java.util.Comparator;
+
 /**
  * Created by Fran on 17/05/2017.
  */
-public abstract class Weapon {
+public abstract class Weapon implements Serializable {
 
     // Atributos
 

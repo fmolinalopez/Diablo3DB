@@ -1,5 +1,6 @@
 package com.molina.model;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -18,7 +19,6 @@ public class DiabloDB{
     }
 
     // Metodos
-
 
     // Comparador de armas por nombre, si tienen el mismo nombre las compara por su dps.
 
@@ -96,6 +96,33 @@ public class DiabloDB{
     public void removeWeapon(int index) {
         weapons.remove(index);
     }
+
+    public void saveWeapons() {
+        try {
+            ObjectOutputStream saveWeapons = new ObjectOutputStream(new FileOutputStream("info/Weapons.dat"));
+
+            saveWeapons.writeObject( weapons );
+
+            saveWeapons.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadWeapons() {
+        try {
+            ObjectInputStream loadWeapons = new ObjectInputStream(new FileInputStream("info/Weapons.dat"));
+
+            weapons = (ArrayList<Weapon>) loadWeapons.readObject();
+
+            loadWeapons.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // Accesores
 

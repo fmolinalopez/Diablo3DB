@@ -12,6 +12,11 @@ public class DiabloApp {
     private Scanner input = new Scanner(System.in);
     private DiabloDB diabloDB = new DiabloDB();
 
+    public DiabloApp() {
+        diabloDB = new DiabloDB();
+        diabloDB.loadWeapons();
+    }
+
     public void run(){
         int option;
 
@@ -38,20 +43,21 @@ public class DiabloApp {
 
             }
         }
+        diabloDB.saveWeapons();
     }
 
-    // Metodo que carga armas de prueba al arraylist weapons.
-
-    public void loadTestWeapons() {
-        diabloDB.addWeapon(new Sword("Fulminator", "Chance on hit to apply lightning damage", 125.3));
-        diabloDB.addWeapon(new Sword("Doombringer","Physical skills deals 15-20% more damage", 200));
-        diabloDB.addWeapon(new Axe("Genzaniku", "Chance to summon a ghostly fallen champion when attacking", 150));
-        diabloDB.addWeapon(new Axe("Hack", "75-100% of your Thorns damage is applied on every attack", 50));
-        diabloDB.addWeapon(new Crossbow("Calamity", "Enemies you hit become Marked for Death", 90));
-        diabloDB.addWeapon(new Crossbow("Balefire caster", "Fire skills deal 15-20% more damage", 70));
-        diabloDB.addWeapon(new Wand("Aether walker", "Teleport no longer has a cooldown but cost 25 Arcane power", 40));
-        diabloDB.addWeapon(new Wand("Serpent's sparker", "You may have one extra Hydra active at a time", 30));
-    }
+//    // Metodo que carga armas de prueba al arraylist weapons.
+//
+//    public void loadTestWeapons() {
+//        diabloDB.addWeapon(new Sword("Fulminator", "Chance on hit to apply lightning damage", 125.3));
+//        diabloDB.addWeapon(new Sword("Doombringer","Physical skills deals 15-20% more damage", 200));
+//        diabloDB.addWeapon(new Axe("Genzaniku", "Chance to summon a ghostly fallen champion when attacking", 150));
+//        diabloDB.addWeapon(new Axe("Hack", "75-100% of your Thorns damage is applied on every attack", 50));
+//        diabloDB.addWeapon(new Crossbow("Calamity", "Enemies you hit become Marked for Death", 90));
+//        diabloDB.addWeapon(new Crossbow("Balefire caster", "Fire skills deal 15-20% more damage", 70));
+//        diabloDB.addWeapon(new Wand("Aether walker", "Teleport no longer has a cooldown but cost 25 Arcane power", 40));
+//        diabloDB.addWeapon(new Wand("Serpent's sparker", "You may have one extra Hydra active at a time", 30));
+//    }
 
     // Metodo que imprime el nombre de las armas en orden alfabetico.
 

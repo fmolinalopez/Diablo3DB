@@ -9,7 +9,6 @@ public class Main {
 
         DiabloApp diabloApp = new DiabloApp();
 
-        diabloApp.loadTestWeapons();
         diabloApp.run();
 
     }
