@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by Fran on 22/05/2017.
  */
-public class DiabloDB {
+public class DiabloDB{
 
     // Atributos
 
