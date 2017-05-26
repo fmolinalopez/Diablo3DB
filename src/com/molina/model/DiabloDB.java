@@ -97,6 +97,7 @@ public class DiabloDB{
         weapons.remove(index);
     }
 
+    // Metodo que guarda las armas existentes en el arraylist weapons en el archivo "info/Weapons.dat".
     public void saveWeapons() {
         try {
             ObjectOutputStream saveWeapons = new ObjectOutputStream(new FileOutputStream("info/Weapons.dat"));
@@ -108,6 +109,8 @@ public class DiabloDB{
             e.printStackTrace();
         }
     }
+
+    // Metodo que carga armas al arraylist weapons desde el archivo "info/Weapons.dat".
 
     public void loadWeapons() {
         try {
