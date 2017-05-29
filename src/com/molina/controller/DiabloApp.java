@@ -2,6 +2,7 @@ package com.molina.controller;
 
 import com.molina.model.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -119,13 +120,8 @@ public class DiabloApp {
 
         do {
             System.out.println("Enter weapon type");
-            System.out.println("1.- Sword");
-            System.out.println("2.- Axe");
-            System.out.println("3.- Crossbow");
-            System.out.println("4.- Wand");
-            weaponType = input.nextInt();
+            weaponType = weaponType();
         } while (weaponType < 1 || weaponType > 4 );
-        input.nextLine();
 
         do {
             System.out.println("Enter weapon name:");
@@ -139,10 +135,47 @@ public class DiabloApp {
 
         do {
             System.out.println("Enter weapon dps:");
-            dps = input.nextDouble();
+            dps = weaponDps();
         } while (dps < 0);
 
         diabloDB.addWeapon(weaponType(weaponType, name, legendaryPower, dps));
+    }
+
+    // Metodo que implementa una excepcion para que no falle al introducir una letra en la eleccion de tipo de arma
+
+    private int weaponType() {
+        Scanner input = new Scanner(System.in);
+        int type;
+
+        System.out.println("1.- Sword");
+        System.out.println("2.- Axe");
+        System.out.println("3.- Crossbow");
+        System.out.println("4.- Wand");
+
+        try {
+            type = input.nextInt();
+            return type;
+        } catch (InputMismatchException e) {
+            System.out.println("Enter a correct number:");
+        }
+
+        return weaponType();
+    }
+
+    // Metodo que implementa una excepcion para que no falle al introducir letras en el dps
+
+    private double weaponDps() {
+        Scanner input = new Scanner(System.in);
+        double dps;
+
+        try {
+            dps = input.nextDouble();
+            return dps;
+        } catch (InputMismatchException e) {
+            System.out.println("Enter a valid dps");
+        }
+
+        return weaponDps();
     }
 
     // Metodo que pide el indice de un arma al usuario para borrarla del arraylist weapons.
@@ -214,8 +247,14 @@ public class DiabloApp {
         System.out.println("* 0.- Exit                        *");
         System.out.println("***********************************");
         System.out.println("Option: ");
-        option = input.nextInt();
 
-        return option;
+        try {
+            option = input.nextInt();
+            return option;
+        } catch (InputMismatchException e) {
+            System.out.println("Enter a valid option");
+        }
+
+        return showMenu();
     }
 }
