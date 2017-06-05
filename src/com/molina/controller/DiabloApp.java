@@ -1,6 +1,7 @@
 package com.molina.controller;
 
 import com.molina.model.*;
+import jdk.internal.util.xml.impl.Input;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -27,18 +28,21 @@ public class DiabloApp {
                     readWeapon();
                     break;
                 case 2:
-                    readIndex();
+                    readRemoveIndex();
                     break;
                 case 3:
-                    showWeaponsName();
+                    readModifyIndex();
                     break;
                 case 4:
-                    showWeaponsDps();
+                    showWeaponsName();
                     break;
                 case 5:
-                    showWeaponsType();
+                    showWeaponsDps();
                     break;
                 case 6:
+                    showWeaponsType();
+                    break;
+                case 7:
                     showWeaponsStats();
                     break;
 
@@ -120,7 +124,7 @@ public class DiabloApp {
 
         do {
             System.out.println("Enter weapon type");
-            weaponType = weaponType();
+            weaponType = weaponTypeExcpt();
         } while (weaponType < 1 || weaponType > 4 );
 
         do {
@@ -143,7 +147,7 @@ public class DiabloApp {
 
     // Metodo que implementa una excepcion para que no falle al introducir una letra en la eleccion de tipo de arma
 
-    private int weaponType() {
+    private int weaponTypeExcpt() {
         Scanner input = new Scanner(System.in);
         int type;
 
@@ -159,49 +163,7 @@ public class DiabloApp {
             System.out.println("Enter a correct number:");
         }
 
-        return weaponType();
-    }
-
-    // Metodo que implementa una excepcion para que no falle al introducir letras en el dps
-
-    private double weaponDps() {
-        Scanner input = new Scanner(System.in);
-        double dps;
-
-        try {
-            dps = input.nextDouble();
-            return dps;
-        } catch (InputMismatchException e) {
-            System.out.println("Enter a valid dps");
-        }
-
-        return weaponDps();
-    }
-
-    // Metodo que pide el indice de un arma al usuario para borrarla del arraylist weapons.
-
-    private void readIndex() {
-        int index;
-
-        showWeaponsType();
-
-        do {
-            System.out.println("Enter weapon index:");
-            index = input.nextInt()-1;
-        }while (!correctIndex(index));
-
-        diabloDB.removeWeapon(index);
-    }
-
-    // Metodo que comprueba que el indice introducido por el usuario corresponde a un arma
-    // existente en el arraylist weapons.
-
-    private boolean correctIndex(int index){
-        if (index < 0 || index > diabloDB.getWeapons().size()) {
-            return false;
-        } else {
-            return true;
-        }
+        return weaponTypeExcpt();
     }
 
     // Metodo que creara un arma en funcion del tipo de arma que introduzca el usuario.
@@ -229,6 +191,99 @@ public class DiabloApp {
         return weapon;
     }
 
+    // Metodo que implementa una excepcion para que no falle al introducir letras en el dps
+
+    private double weaponDps() {
+        Scanner input = new Scanner(System.in);
+        double dps;
+
+        try {
+            dps = input.nextDouble();
+            return dps;
+        } catch (InputMismatchException e) {
+            System.out.println("Enter a valid dps");
+        }
+
+        return weaponDps();
+    }
+
+    // Metodo que implementa una excepcion al leer el indice para que no falle al introducir una letra en vez de un entero.
+
+    public int indexExcpt() {
+        Scanner input = new Scanner(System.in);
+        int index;
+
+        try {
+            index = input.nextInt() - 1;
+            return index;
+        } catch (InputMismatchException e) {
+            System.out.println("Enter a valid index");
+        }
+
+        return indexExcpt();
+    }
+
+    // Metodo que pide el indice de un arma al usuario para borrarla del arraylist weapons.
+
+    private void readRemoveIndex() {
+        int index;
+
+        showWeaponsType();
+
+        do {
+            System.out.println("Enter weapon index:");
+            index = indexExcpt();
+        }while (!correctIndex(index));
+
+        diabloDB.removeWeapon(index);
+    }
+
+
+    // Metodo que pide el indice y los datos del arma que se desea modificar
+
+    private void readModifyIndex() {
+        int index;
+        String name;
+        String legendaryPower;
+        double dps;
+
+        showWeaponsType();
+
+        do {
+            System.out.println("Enter weapon index:");
+            index = indexExcpt();
+        }while (!correctIndex(index));
+
+        do {
+            System.out.println("Enter new weapon name:");
+            name = input.nextLine().trim().replaceAll("\\s+", " ");
+        } while (name.equals(""));
+
+        do {
+            System.out.println("Enter new weapon Legendary power:");
+            legendaryPower = input.nextLine().trim().replaceAll("\\s+", " ");
+        } while (legendaryPower.equals(""));
+
+        do {
+            System.out.println("Enter new weapon dps:");
+            dps = weaponDps();
+        } while (dps < 0);
+
+
+        diabloDB.modifyWeapon(name, legendaryPower, dps, index);
+    }
+
+    // Metodo que comprueba que el indice introducido por el usuario corresponde a un arma
+    // existente en el arraylist weapons.
+
+    private boolean correctIndex(int index){
+        if (index < 0 || index > diabloDB.getWeapons().size()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     // Metodo que imprime el menu principal
 
     private int showMenu() {
@@ -239,10 +294,11 @@ public class DiabloApp {
         System.out.println("* 1.- Add Weapon                  *");
         if (diabloDB.getWeapons().size() > 0) {
             System.out.println("* 2.- Remove Weapon               *");
-            System.out.println("* 3.- Sort Weapons by name        *");
-            System.out.println("* 4.- Sort Weapons by dps         *");
-            System.out.println("* 5.- Show Weapons by type        *");
-            System.out.println("* 6.- Show Weapons with all stats *");
+            System.out.println("* 3.- Modify Weapon               *");
+            System.out.println("* 4.- Sort Weapons by name        *");
+            System.out.println("* 5.- Sort Weapons by dps         *");
+            System.out.println("* 6.- Show Weapons by type        *");
+            System.out.println("* 7.- Show Weapons with all stats *");
         }
         System.out.println("* 0.- Exit                        *");
         System.out.println("***********************************");

@@ -91,6 +91,14 @@ public class DiabloDB{
         }
     }
 
+    // Metodo que modifica el nombre, el poder legendario y el dps del arma seleccionada.
+
+    public void modifyWeapon(String name, String legendaryPower, double dps, int index) {
+        weapons.get(index).setWeaponName(name);
+        weapons.get(index).setLegendaryPower(legendaryPower);
+        weapons.get(index).setDps(dps);
+    }
+
     // Metodo que elimina un arma del arraylist weapons.
 
     public void removeWeapon(int index) {
