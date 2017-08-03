@@ -8,4 +8,4 @@ Option 4 sorts the weapons by their names and prints them on console. <br>
 Option 5 sorts the weapons by their dps and prints them on console. <br> 
 Option 6 sorts the weapons by their type and prints them on cosole. <br>
 Option 7 sorts the weapons by their type and prints all weapons stats on console. <br> 
-Option 0 exit the app and save the list in Weapons.dat file on the info directory. <br>
+Option 0 exit the app and save the list in Weapons.dat file into the info directory. <br>
